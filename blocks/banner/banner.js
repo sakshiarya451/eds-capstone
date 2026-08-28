@@ -1,5 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-import { fetchPlaceholders } from '/scripts/placeholders.js';
+import { fetchPlaceholders } from '../../scripts/placeholders.js';
 
 /**
  * Returns true if the given string is a valid CSS color value.
