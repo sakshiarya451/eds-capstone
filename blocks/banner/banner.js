@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { fetchPlaceholders } from '/scripts/placeholders.js';
 
 /**
  * Returns true if the given string is a valid CSS color value.
@@ -86,5 +87,13 @@ export default function decorate(block) {
     heading.textContent = title;
     content.append(heading);
     block.append(content);
+    // fetch placeholders from the 'en' folder
+    const placeholders = await fetchPlaceholders('en');
+    // retrieve the value for key 'foo'
+    const bannerPlaceholder = placeholders['banner-title'];
+    const placeholderDiv = document.createElement('div');
+    placeholderDiv.className = 'banner-placeholder';
+    placeholderDiv.append(bannerPlaceholder);
+    block.append(placeholderDiv);
   }
 }
