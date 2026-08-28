@@ -42,7 +42,7 @@ function textLines(el) {
  * loads and decorates the banner
  * @param {Element} block The banner block element
  */
-export default function decorate(block) {
+export default async function decorate(block) {
   const picture = block.querySelector('picture');
   const img = picture?.querySelector('img');
 
@@ -87,8 +87,8 @@ export default function decorate(block) {
     heading.textContent = title;
     content.append(heading);
     block.append(content);
-    // fetch placeholders from the 'en' folder
-    const placeholders = await fetchPlaceholders('en');
+    // fetch placeholders
+    const placeholders = await fetchPlaceholders();
     // retrieve the value for key 'foo'
     const bannerPlaceholder = placeholders['banner-title'];
     const placeholderDiv = document.createElement('div');
