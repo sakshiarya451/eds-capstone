@@ -66,7 +66,8 @@ export default async function decorate(block) {
     block.style.setProperty('--banner-background-color', backgroundColor);
   }
 
-  // Build the final structure.
+  // Build the final structure. Render the image/content first so the (likely
+  // LCP) image isn't blocked on the placeholders fetch below.
   block.textContent = '';
 
   if (picture) {
@@ -87,13 +88,14 @@ export default async function decorate(block) {
     heading.textContent = title;
     content.append(heading);
     block.append(content);
-    // fetch placeholders
-    const placeholders = await fetchPlaceholders();
-    // retrieve the value for key 'foo'
-    const bannerPlaceholder = placeholders['banner-title'];
-    const placeholderDiv = document.createElement('div');
-    placeholderDiv.className = 'banner-placeholder';
-    placeholderDiv.append(bannerPlaceholder);
-    block.append(placeholderDiv);
+  }
+
+  // Add the banner title sourced from the placeholders sheet at the top.
+  const placeholders = await fetchPlaceholders();
+  if (placeholders.bannerTitle) {
+    const bannerTitleElement = document.createElement('div');
+    bannerTitleElement.className = 'banner-title';
+    bannerTitleElement.textContent = placeholders.bannerTitle;
+    block.prepend(bannerTitleElement);
   }
 }

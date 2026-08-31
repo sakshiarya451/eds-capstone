@@ -1,0 +1,141 @@
+.employee-list {
+  width: 100%;
+}
+
+.employee-list .employee-list-table {
+  width: 100%;
+  overflow: visible;
+}
+
+.employee-list table,
+.employee-list tbody,
+.employee-list tr,
+.employee-list td {
+  display: block;
+}
+
+.employee-list table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--body-font-size-s);
+}
+
+.employee-list caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.employee-list td {
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.employee-list thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.employee-list tbody tr {
+  margin-bottom: 16px;
+  border: 1px solid #dadada;
+}
+
+.employee-list td {
+  display: grid;
+  grid-template-columns: minmax(110px, 40%) 1fr;
+  gap: 12px;
+  border-bottom: 1px solid #dadada;
+}
+
+.employee-list td:last-child {
+  border-bottom: 0;
+}
+
+.employee-list td::before {
+  content: attr(data-label);
+  font-weight: 600;
+}
+
+.employee-list .employee-list-load-more {
+  display: flex;
+  margin: 24px auto 0;
+}
+
+.employee-list .employee-list-load-more[hidden] {
+  display: none;
+}
+
+.employee-list .employee-list-error {
+  padding: 12px 16px;
+  border-left: 4px solid #b30000;
+  background-color: #fff2f2;
+  color: #7a0000;
+  font-size: var(--body-font-size-s);
+}
+
+@media (width >= 600px) {
+  .employee-list .employee-list-table {
+    overflow-x: auto;
+  }
+
+  .employee-list table {
+    display: table;
+  }
+
+  .employee-list tbody {
+    display: table-row-group;
+  }
+
+  .employee-list thead {
+    position: static;
+    display: table-header-group;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+  }
+
+  .employee-list tr {
+    display: table-row;
+  }
+
+  .employee-list th,
+  .employee-list td {
+    padding: 12px 16px;
+    border: 1px solid #dadada;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .employee-list th {
+    background-color: var(--light-color);
+    font-weight: 600;
+  }
+
+  .employee-list tbody tr {
+    border: 0;
+  }
+
+  .employee-list tbody tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+
+  .employee-list td {
+    display: table-cell;
+  }
+
+  .employee-list td::before {
+    display: none;
+  }
+}
